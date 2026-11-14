@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-!z0g=ss**usr%efhwe6--uy@ie9*jb_ppne!&kn@lfw5df4#$r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+     
+]
 
 
 # Application definition
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'sanuvia.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,6 +117,42 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+
+# Project-level static folder
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+# Folder where collectstatic will collect everything
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# =========================================================
+# MEDIA FILES
+# =========================================================
+
+# URL used for uploaded images/files
+MEDIA_URL = "/media/"
+
+# Folder where uploaded files will be stored
+MEDIA_ROOT = BASE_DIR / "media"
+
+
+
+
+CORS_ALLOWED_ORIGINS = [
+
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
